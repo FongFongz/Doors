@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>The Installation - Doors</title>
+    <link href="style.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Source+Serif+Pro:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+    <style>
+        body {
+          background-color:#202020 ;
+          background-image: url(https://github.com/FongFongz/305/raw/master/star.png);
+          text-align:center;
+        }
+
+        h1, h2, h3, h4 {
+          font-family: 'Source Serif Pro','Times New Roman', serif;
+        }
+
+        h1 {
+          color: #F45A3F;
+          font-size: 5rem;
+        }
+
+        h3 {
+          color: #ECE0C6;
+          font-size: 1.5rem;
+        }
+
+        h4 {
+          color: #ECE0C6;
+          font-size: 1rem;
+        }
+
+        #btn {
+          width: 10rem;
+          height: 10rem;
+          border-radius: 50%;
+          opacity: 100%;    
+          position: relative;
+          top: -20rem;
+          z-index: 2;
+          cursor: pointer;
+          font-family: 'Source Serif Pro','Times New Roman', serif;
+          font-size: 2rem;
+          color: whitesmoke;
+          background-color: darkcyan;
+          border-style: none;
+          
+        }
+
+@media screen and (min-width: 376px) and (max-width: 767px){
+ #btn {
+          width: 5rem;
+          height: 5rem;
+          font-size: 1rem;
+          top: -10rem;
+      }
+}
+
+@media screen and (max-width: 375px){
+ #btn {
+          width: 3rem;
+          height: 3rem;
+          font-size: 0.5rem;
+          top: -5rem;
+      }
+h1 {font-size: 3rem;}
+h3 {font-size: 1rem;}
+h4 {font-size: 0.8rem;}
+}
+
+
+    </style>
+    
+
+  </head>
+
+  <body>
+    <div id="wrapper">
+      
+        <h3>Multimedia Installation Project</h3>
+        <h1>Doors</h1>            
+              
+
+        <video id="lockdown" width="80%">
+          <source src="https://github.com/FongFongz/305/raw/master/lockdown.mp4" type="video/mp4">
+            
+        </video>
+
+        <br>
+
+        <button id="btn" onclick="playvideo()">Click Me</button>
+        <br>
+
+        <audio id="bird" loop>        
+          <source src="https://github.com/FongFongz/305/raw/master/chirping.mp3" type="audio/mpeg">
+        
+        </audio>
+
+      
+
+      
+      
+      
+
+    </div>
+    
+
+    <script>
+      var installation = document.getElementById("lockdown");
+      var chirp = document.getElementById("bird");
+      var videoSource = [
+          
+      "https://github.com/FongFongz/305/raw/master/bird.mp4",
+      "https://github.com/FongFongz/305/raw/master/beach.m4v",
+      "https://github.com/FongFongz/305/raw/master/play%20ground.mp4",
+      "https://github.com/FongFongz/305/raw/master/coffee.m4v",
+      "https://github.com/FongFongz/305/raw/master/boat.mp4",
+      "https://github.com/FongFongz/305/raw/master/sun.mp4",
+
+          
+      ];
+
+      var activeVideo = 5;
+      
+
+      function playvideo() {
+          
+          installation.play();
+          chirp.play();
+          document.getElementById("btn").style.visibility="hidden"
+      }
+
+      installation.addEventListener("ended",changevideo);
+      function changevideo() {
+              document.getElementById("btn").style.visibility="visible"
+              document.getElementById("btn").textContent = "Unlock";
+              
+              activeVideo++ ;
+              if(activeVideo === videoSource.length){
+                  activeVideo = 0;
+                }
+              installation.src = videoSource[activeVideo];
+          }
+    </script>
+
+  </body>
+</html>
